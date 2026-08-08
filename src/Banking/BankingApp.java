@@ -25,13 +25,14 @@ public class BankingApp {
             command = scanner.nextInt();
 
             switch (command) {
-                case 1 -> System.out.println("$"+balance());
-                case 2 -> System.out.println("$"+deposit());
-                case 3 -> System.out.println("$"+withdraw());
+                case 1 -> System.out.printf("$%.2f\n", balance());
+                case 2 -> System.out.printf("$%.2f\n", deposit());
+                case 3 -> System.out.printf("$%.2f\n", withdraw());
                 case 4 -> {
                     System.out.println("We are waiting for your next visit! See you");
                     state = false;
                 }
+                default -> System.out.println("Invalid operation");
             }
         }
 
