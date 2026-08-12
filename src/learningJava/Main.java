@@ -509,7 +509,7 @@ void main() {
     int age = scanner.nextInt();
     scanner.nextLine();
 
-    if(ageCheck(age)) {
+    if (ageCheck(age)) {
         System.out.println("You may sign up");
     } else {
         System.out.println("You must be 18+ to sign up");
@@ -534,7 +534,7 @@ void main() {
     // fill method - fill with the value that you pass.
     Arrays.fill(fruits, "pineapple");
 
-    for (String fruit : fruits){
+    for (String fruit : fruits) {
         System.out.println(fruit);
     }
 
@@ -549,39 +549,63 @@ void main() {
 
     String[] userArray = new String[size];
 
-    for (int i = 0; i < userArray.length; i++){
+    for (int i = 0; i < userArray.length; i++) {
         System.out.print("Enter the food: ");
         userArray[i] = scanner.nextLine();
     }
 
-    for(String food : userArray){
+    for (String food : userArray) {
         System.out.println(food);
     }
 
     System.out.println(Arrays.toString(userArray));
 
 
+    //Search in java
+
+    String fruitSearch;
+
+    System.out.print("Enter the fruit to search for: ");
+
+    fruitSearch = scanner.nextLine();
+
+    String[] foods = {"banana", "apple", "kiwi"};
+
+    boolean isFound = false;
+
+    for (int i = 0; i < foods.length; i++) {
+        if (fruitSearch.equals(foods[i])) {
+            System.out.println("Element found at position: " + (i + 1));
+            isFound = true;
+            break;
+        }
+    }
+
+    if (!isFound) {
+        System.out.println("Element not found in the database. Try again.");
+    }
+
+    // Variable arguments (varargs) = allow a method to accept a varying # of arguments makes methods more flexible, no need for overloaded.
+    // methods java will pack the arguments into an array.
+    // one varargs per method, and should be the last one. Ex: void example(String name, int number, int... person)
 
 
+    add(1, 2, 3, 4, 5);
+    System.out.println(average(random.nextInt(100), random.nextInt(10), random.nextInt(1000)));
 
 
+    // 2D array = an array where each element is an array useful for storing a matrix of data.
 
+    String[][] supermarket = {{"banana", "apple", "pineapple"}, {"pasta", "potato", "rice"}, {"orange juice", "uva", "apple juice", "kiwi juice"}};
 
+    supermarket[2][0] = "natural orange juice";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    for(String[] items : supermarket){
+        for(String item : items){
+            System.out.print(item + " ");
+        }
+        System.out.println();
+    }
 
 
 
@@ -591,19 +615,47 @@ void main() {
     scanner.close();
 }
 
+static double average(double... numbers) {
+    double sum = 0;
+
+    System.out.println(Arrays.toString(numbers));
+
+    if (numbers.length == 0) return 0;
+
+    for (double number : numbers) {
+        sum += number;
+    }
+
+    return sum / numbers.length;
+}
+
+
+static void add(int... numbers) {
+
+    int sum = 0;
+
+    if (numbers.length == 0) System.out.println("This is empty");
+
+    for (int number : numbers) {
+        sum += number;
+    }
+
+    System.out.println(sum);
+}
+
 static void learningMethod(String bro) {
     System.out.println("Hey " + bro);
 }
 
-static double square(double number){
+static double square(double number) {
     return number * number;
 }
 
-static double cube(double cubeNumber){
+static double cube(double cubeNumber) {
     return cubeNumber * cubeNumber * cubeNumber;
 }
 
-static boolean ageCheck(int age){
+static boolean ageCheck(int age) {
     return age >= 16;
 }
 
@@ -614,19 +666,19 @@ static boolean ageCheck(int age){
 
 //overloaded methods = methods that share the same name, but different parameters signature = name + parameters
 
-static double add(double a, double b){
+static double add(double a, double b) {
     return a + b;
 }
 
-static double add(double a, double b, double c){
+static double add(double a, double b, double c) {
     return a + b;
 }
 
-static String pizza(String bread){
+static String pizza(String bread) {
     return bread + " pizza";
 }
 
-static String pizza(String bread, String cheese){
+static String pizza(String bread, String cheese) {
     return cheese + " " + bread + " pizza";
 }
 
